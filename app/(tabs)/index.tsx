@@ -1,4 +1,5 @@
 import { Link } from "expo-router";
+import { useAuth } from "@/lib/auth-context"
 import { Text, View, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 

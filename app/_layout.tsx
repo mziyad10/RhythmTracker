@@ -1,5 +1,6 @@
 import { AuthProvider } from "@/lib/auth-context";
-import { Stack, useRouter } from "expo-router";
+import { useAuth } from "@/lib/auth-context"
+import { Stack, useRouter, useSegments } from "expo-router";
 import React, { use, useEffect } from "react";
 
 function RouteGuard({children} : {children:React.ReactNode}){
@@ -8,7 +9,7 @@ function RouteGuard({children} : {children:React.ReactNode}){
   const segments = useSegments() 
 
   useEffect(()=>{
-    const inAuthGroup = segments[0] === "(auth)"
+    const inAuthGroup = segments[0] === "auth";
     if(!user && !inAuthGroup && !isLoadingUser){
       router.replace("/auth")
     }else if(user && inAuthGroup && !isLoadingUser){
